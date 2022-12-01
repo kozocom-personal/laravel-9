@@ -39,6 +39,10 @@ FROM base as production
 # Copy existing application directory contents
 COPY . /var/www
 
+RUN composer install \
+    && chmod -R 777 storage \
+    && chmod 777 bootstrap
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
