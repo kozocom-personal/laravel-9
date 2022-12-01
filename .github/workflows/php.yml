@@ -1,0 +1,11 @@
+name: PHP
+on:
+  push:
+    branches: ["develop"]
+  pull_request:
+    branches: ["master", "develop"]
+
+jobs:
+  testing:
+    - name: phpstan
+      run: docker-compose exec -T php composer static-type-check
